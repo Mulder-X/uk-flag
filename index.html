@@ -1,0 +1,150 @@
+<html lang="uk">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    body {
+        background-color: #bbdefb;
+    }
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  }
+  .wrapper > button {
+      width: 300px;
+      margin-top: 16px;
+      background-color: #0057B8;
+      border: 1px solid #0057B8;
+      height: 35px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #FFD700;
+      transition: background-color 300ms;
+  }
+  .wrapper > button:hover {
+    background-color: #0057B8;
+    opacity: 0.7;
+  }
+ 
+  .stick {
+      height: 450px;
+      width: 10px;
+      background: black;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+  }
+ 
+  .flag {
+      width: 300px;
+      height: 200px;
+      box-shadow: 0px 0px 90px 1px #989;
+      background-color: transparent;
+      position: relative;
+  }
+ 
+  .top {
+      height: 100px;
+      background-color: #0057B8;
+  }
+ 
+  .bottom {
+      height: 100px;
+      background-color: #FFD700;
+  }
+ 
+  .wave{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(
+        128deg, rgba(89,72,21,0) 39%,
+        rgba(250,245,245,0.8474025974025974)
+        46%, rgba(89,72,21,0) 53%);
+    animation-name: wavy;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  pre {
+      display: none;
+      margin-top: 16px;
+  }
+  .active {
+      display: flex;;
+  }
+ 
+  @keyframes wavy {
+     0%{
+      background-position:
+      -400px 0px, -400px 0px,
+      -400px 0px,-400px 0px;
+     }
+     100%{
+      background-position: 800px 0px,
+      800px 0px, 800px 0px, 800px 0px;
+     }
+   }
+</style>
+<body>
+    <div class="wrapper">
+        <div class="flag">
+            <div class="wave"></div>
+            <div class="top"></div>
+            <div class="middle">
+            </div>
+            <div class="bottom"></div>
+        </div>
+        <button id ="btn">Тицьни мене</button>
+        <pre id="text"></pre>
+    </div>
+    <script>
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        var btn = document.getElementById("btn");
+        var text = document.getElementById("text");
+        var iterator = 0;
+        var array = [
+            "Ти найкраща",
+            "Ми переможемо",
+            "Україна понад усе",
+            "В тебе все вийде",
+            "Все найкраще тільки попереду",
+            "Я пишаюся Україною",
+            "Ти неперевершена",
+            "Добрий вечір, ми з України",
+            "Як твій песик?",
+            "Ми всі одна велика сім'я",
+            "Круто буди Українцем",
+            "Будь сильною",
+            "Твоя врода один з чинників нашої перемоги",
+            "Наша мета бути вільними",
+            "Ти вмієш вирішувати подібні ситуації. Все буде добре",
+            "Мені шкода, що ти переживаєш такі проблеми",
+            "Ти здатна впоратися з цим",
+            "Мені це також дуже болить",
+            "За чорною полосою буде біла",
+            "Найтемніша ніч перед світанком",
+            "Ми єдині",
+            "Все буде Україна!",
+            "Ой у лузі червона калина похилилася.\nЧогось наша славна Україна зажурилася.\nА ми тую червону калину піднімемо,\nА ми нашу славну Україну, гей, гей, розвеселимо!\nА ми тую червону калину піднімемо,\nА ми нашу славну Україну, гей, гей, розвеселимо!"
+        ];
+        if (btn) {
+            btn.addEventListener("click", function() {
+                if (iterator >= array.length) iterator = 0;
+                text.classList.add("active")
+                text.innerText = array[iterator];
+                iterator++;
+            });
+        }
+    </script>
+</body>
+ 
+</html>
